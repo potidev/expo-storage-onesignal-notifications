@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    "apple",
+    "android",
+    "web"
+  ],
+  "apple": {
+    "modules": [
+      "StorageOneSignalNotificationsModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "com.potidev.expo.storage.onesinal.notifications.StorageOneSignalNotificationsModule"
+    ]
+  }
+}

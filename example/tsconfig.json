@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@potidev/expo-storage-onesignal-notifications": ["../src/index"],
+      "@potidev/expo-storage-onesignal-notifications/*": ["../src/*"]
+    }
+  }
+}
