@@ -11,9 +11,3 @@ export type StorageOneSignalNotificationsModuleEvents = {
 export type ChangeEventPayload = {
   value: string;
 };
-
-export type StorageOneSignalNotificationsViewProps = {
-  url: string;
-  onLoad: (event: { nativeEvent: OnLoadEventPayload }) => void;
-  style?: StyleProp<ViewStyle>;
-};

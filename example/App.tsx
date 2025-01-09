@@ -1,37 +1,22 @@
-import { useEvent } from 'expo';
-import StorageOneSignalNotifications, { StorageOneSignalNotificationsView } from '@potidev/expo-storage-onesignal-notifications';
-import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import StorageOneSignalNotifications from '@potidev/expo-storage-onesignal-notifications';
+
+import { LogLevel, OneSignal } from 'react-native-onesignal';
+import Constants from "expo-constants";
+
+OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+OneSignal.initialize(Constants.expoConfig?.extra?.oneSignalAppId);
+
+// Also need enable notifications to complete OneSignal setup
+OneSignal.Notifications.requestPermission(true)
 
 export default function App() {
-  const onChangePayload = useEvent(StorageOneSignalNotifications, 'onChange');
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
         <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{StorageOneSignalNotifications.PI}</Text>
-        </Group>
         <Group name="Functions">
           <Text>{StorageOneSignalNotifications.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await StorageOneSignalNotifications.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <StorageOneSignalNotificationsView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
         </Group>
       </ScrollView>
     </SafeAreaView>

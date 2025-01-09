@@ -1,2 +1,7 @@
-<manifest>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <meta-data
+            android:name="com.onesignal.NotificationServiceExtension"
+            android:value="com.potidev.expo.storage.onesinal.notifications.StorageOneSignalNotificationsListenerService" />
+    </application>
 </manifest>
