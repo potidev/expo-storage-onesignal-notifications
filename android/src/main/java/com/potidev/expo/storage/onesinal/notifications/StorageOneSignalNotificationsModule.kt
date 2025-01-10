@@ -29,7 +29,7 @@ class StorageOneSignalNotificationsModule : Module() {
     AsyncFunction("deleteAllNotifications") {
       return@AsyncFunction runBlocking {
         deleteAllNotifications()
-      }
+      } 
     }
 
     AsyncFunction("deleteNotificationById") { id: Int ->

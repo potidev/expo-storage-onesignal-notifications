@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { OneSignalStorage, OneSignalDatabaseItem } from '@potidev/expo-storage-onesignal-notifications';
 
 import { LogLevel, OneSignal } from 'react-native-onesignal';
@@ -16,7 +16,9 @@ export default function App() {
   const [notifications, setNotifications] = useState<OneSignalDatabaseItem[]>([]);
 
   useEffect(() => {
-    requestDataBase();
+    if(Platform.OS === "android") {
+      requestDataBase();
+    }
   }, [])
 
   const requestDataBase = async () => {
@@ -34,13 +36,17 @@ export default function App() {
   }
 
   const handleClearAll = async () => {
-    await OneSignalStorage.deleteAllNotifications(); 
-    requestDataBase();
+    if(Platform.OS === "android") {
+      await OneSignalStorage.deleteAllNotifications(); 
+      requestDataBase();
+    }
   }
 
   const handleClear = async (id: string) => {
-    await OneSignalStorage.deleteNotificationById(parseInt(id)); 
-    requestDataBase();
+    if(Platform.OS === "android") {
+      await OneSignalStorage.deleteNotificationById(parseInt(id)); 
+      requestDataBase();
+    }
   }
 
   return (
