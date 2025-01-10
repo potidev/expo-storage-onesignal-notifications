@@ -1,10 +1,19 @@
 import { NativeModule, requireNativeModule } from 'expo';
 
-import { StorageOneSignalNotificationsModuleEvents } from './StorageOneSignalNotifications.types';
+export type OneSignalDatabaseItem = {
+  id: string;
+  title: string;
+  body: string;
+  jsonData: string;
+  timestamp: string;
+}
 
-declare class StorageOneSignalNotificationsModule extends NativeModule<StorageOneSignalNotificationsModuleEvents> {
-  hello(): string;
+declare class StorageOneSignalNotificationsModule extends NativeModule {
+  getNotifications(): Promise<OneSignalDatabaseItem[]>;
+  getNotifcationById(id: number): Promise<OneSignalDatabaseItem>;
+  deleteAllNotifications(): Promise<void>;
+  deleteNotificationById(id: number): Promise<void>;
 }
 
 // This call loads the native module object from the JSI.
-export default requireNativeModule<StorageOneSignalNotificationsModule>('StorageOneSignalNotifications');
+export const OneSignalStorage = requireNativeModule<StorageOneSignalNotificationsModule>('StorageOneSignalNotificationsModule');

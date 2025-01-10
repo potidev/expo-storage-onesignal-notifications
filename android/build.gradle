@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-kapt'
 
 group = 'com.potidev.expo.storage.onesinal.notifications'
 version = '0.1.0'
@@ -43,5 +44,11 @@ android {
 }
 
 dependencies {
+  implementation 'com.google.code.gson:gson:2.8.9'
   implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
+
+  def room_version = "2.5.1" // Verifique a versão mais recente
+
+  implementation "androidx.room:room-runtime:$room_version"
+  kapt "androidx.room:room-compiler:$room_version" // Se você estiver usando Kotlin
 }

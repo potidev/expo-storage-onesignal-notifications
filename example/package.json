@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "expo": "~52.0.24",
     "onesignal-expo-plugin": "^2.0.3",
     "react": "18.3.1",
@@ -18,8 +19,8 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
-    "typescript": "^5.3.3",
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "typescript": "^5.3.3"
   },
   "private": true,
   "expo": {

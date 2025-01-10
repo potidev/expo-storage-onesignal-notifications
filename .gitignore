@@ -55,6 +55,7 @@ yarn-error.log
 
 # Expo
 .expo/*
+/example/app.json
 
 # Local scripts
 /scripts/local
